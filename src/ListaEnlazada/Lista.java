@@ -1,7 +1,4 @@
-// ==========================================================
-// ASIGNADO A: INTEGRANTE 1 (PARTE 1 - Acceso, Clientes y Lista)
-// NO MODIFICAR si perteneces a otra parte.
-// ==========================================================
+
 package ListaEnlazada;
 
 public class Lista<T> {
