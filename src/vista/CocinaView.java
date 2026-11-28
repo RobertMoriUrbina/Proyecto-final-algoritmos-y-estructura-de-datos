@@ -26,7 +26,6 @@ public class CocinaView extends JFrame {
     private JButton btnMarcarListo;
     private PedidoController controller;
 
-    // Paleta de colores
     private final Color colorAzulOscuro = new Color(16, 43, 83);
     private final Color colorMarron = new Color(139, 69, 19);
     private final Color colorFondoClaro = new Color(245, 245, 245);
@@ -46,7 +45,6 @@ public class CocinaView extends JFrame {
         setLayout(new BorderLayout());
         getContentPane().setBackground(Color.WHITE);
 
-        // 1. BARRA SUPERIOR (MENÚ)
         JPanel panelMenu = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 5));
         panelMenu.setBackground(colorAzulOscuro);
 
@@ -63,7 +61,6 @@ public class CocinaView extends JFrame {
             panelMenu.add(lbl);
         }
 
-        // 2. TEXTO DE POLÍTICA
         lblPoliticaAtencion = new JLabel(
                 "Política de atención: Prioridad (ALTA > MEDIA > BAJA)  |  Desempate: FIFO por orden de llegada."
         );
@@ -77,7 +74,6 @@ public class CocinaView extends JFrame {
         panelNorte.add(lblPoliticaAtencion, BorderLayout.SOUTH);
         add(panelNorte, BorderLayout.NORTH);
 
-        // 3. PANEL IZQUIERDO: SIGUIENTE PEDIDO
         JPanel panelFrente = new JPanel(new BorderLayout(10, 10));
         panelFrente.setBackground(Color.WHITE);
         panelFrente.setBorder(BorderFactory.createCompoundBorder(
@@ -98,7 +94,7 @@ public class CocinaView extends JFrame {
         btnIniciarPreparacion.setFocusPainted(false);
 
         btnMarcarListo = new JButton("Marcar listo");
-        btnMarcarListo.setBackground(new Color(34, 139, 34)); // Verde
+        btnMarcarListo.setBackground(new Color(34, 139, 34));
         btnMarcarListo.setForeground(Color.WHITE);
         btnMarcarListo.setFont(fuenteTitulo);
         btnMarcarListo.setFocusPainted(false);
@@ -109,12 +105,10 @@ public class CocinaView extends JFrame {
         panelFrente.add(lblSiguientePedido, BorderLayout.CENTER);
         panelFrente.add(panelBotones, BorderLayout.SOUTH);
 
-        // 4. PANEL DERECHO: TABLA DE COLA
         modeloCola = new DefaultTableModel(new String[]{"Cola de pedidos", "Prioridad"}, 0);
         tablaColaPedidos = new JTable(modeloCola);
         estilizarTabla(tablaColaPedidos);
 
-        // 5. PANEL INFERIOR: ESTADO DE COMANDAS
         modeloComandas = new DefaultTableModel(new String[]{"Comanda", "Hora ingreso", "Estado"}, 0);
         tablaComandas = new JTable(modeloComandas);
         estilizarTabla(tablaComandas);
@@ -130,7 +124,6 @@ public class CocinaView extends JFrame {
         panelInferior.add(lblEstadoTitulo, BorderLayout.NORTH);
         panelInferior.add(new JScrollPane(tablaComandas), BorderLayout.CENTER);
 
-        // 6. UNIR TODO
         JSplitPane splitSuperior = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, panelFrente, new JScrollPane(tablaColaPedidos));
         splitSuperior.setDividerLocation(450);
         splitSuperior.setResizeWeight(0.5);
@@ -142,7 +135,6 @@ public class CocinaView extends JFrame {
 
         add(splitVertical, BorderLayout.CENTER);
 
-        // --- EVENTOS DE LOS BOTONES ---
         btnIniciarPreparacion.addActionListener(e -> {
             Pedido atendido = controller.atenderSiguientePedido();
             if (atendido != null) {
@@ -229,10 +221,5 @@ public class CocinaView extends JFrame {
             });
             aux = aux.getSiguiente();
         }
-    }
-
-    // Se deja el main de prueba del documento original
-    public static void main(String[] args) {
-        // (Nota: Este main funcionará cuando tu compañero de la Parte 2 suba su PedidoController)
     }
 }

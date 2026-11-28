@@ -38,7 +38,7 @@ public class MenuPrincipal extends JFrame {
         inicializarComponentes();
     }
 
-    // 2. Constructor vacío extra para que puedas probar TU ventana ahora mismo sin errores
+
     public MenuPrincipal() {
         inicializarComponentes();
     }
@@ -51,9 +51,7 @@ public class MenuPrincipal extends JFrame {
         setLayout(new BorderLayout());
         getContentPane().setBackground(Color.WHITE);
 
-        // ==========================================
-        // BARRA SUPERIOR (Título oscuro)
-        // ==========================================
+
         JPanel panelTitulo = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 8));
         panelTitulo.setBackground(colorAzulOscuro);
         JLabel lblTitulo = new JLabel("Dolce Capriccio - Menú principal");
@@ -61,9 +59,7 @@ public class MenuPrincipal extends JFrame {
         lblTitulo.setFont(new Font("Segoe UI", Font.BOLD, 16));
         panelTitulo.add(lblTitulo);
 
-        // ==========================================
-        // BARRA DE MENÚS (Pedidos, Cocina...)
-        // ==========================================
+
         JPanel panelMenu = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         panelMenu.setBackground(colorGrisBarra);
         panelMenu.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, Color.LIGHT_GRAY));
@@ -76,7 +72,7 @@ public class MenuPrincipal extends JFrame {
             lblMenu.setForeground(Color.BLACK);
             lblMenu.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-            // Efecto hover y clic
+
             lblMenu.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -99,9 +95,7 @@ public class MenuPrincipal extends JFrame {
         panelNorte.add(panelMenu, BorderLayout.SOUTH);
         add(panelNorte, BorderLayout.NORTH);
 
-        // ==========================================
-        // PANEL CENTRAL (Mensaje de Bienvenida)
-        // ==========================================
+
         JPanel panelCentro = new JPanel();
         panelCentro.setLayout(new BoxLayout(panelCentro, BoxLayout.Y_AXIS));
         panelCentro.setBackground(Color.WHITE);
@@ -133,9 +127,7 @@ public class MenuPrincipal extends JFrame {
         add(panelCentro, BorderLayout.CENTER);
     }
 
-    // ==========================================
-    // LÓGICA DE NAVEGACIÓN (Basada en tu guía)
-    // ==========================================
+
     public void abrirVista(String opcion) {
         try {
             switch (opcion) {
@@ -161,7 +153,7 @@ public class MenuPrincipal extends JFrame {
                     JOptionPane.showMessageDialog(this, "Opción no reconocida: " + opcion);
             }
         } catch (Exception e) {
-            // Blindaje: Si el controlador o la vista no existen aún, avisa sin cerrar el programa
+
             JOptionPane.showMessageDialog(this,
                     "El módulo de " + opcion + " aún no está disponible.\n" +
                             "(Falta el código de otro integrante o el controlador no está inicializado).",
@@ -173,10 +165,10 @@ public class MenuPrincipal extends JFrame {
         setVisible(true);
     }
 
-    // Main de prueba (Para ver el diseño sin depender de nadie)
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            // Usa el constructor vacío para que no falle por las clases que faltan
+
             new MenuPrincipal().setVisible(true);
         });
     }

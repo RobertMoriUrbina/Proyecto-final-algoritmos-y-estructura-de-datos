@@ -17,7 +17,7 @@ public class ColaPedido {
 
     public void encolar(Comanda nuevaComanda) {
         if (nuevaComanda == null) {
-            System.out.println("⚠️ Aviso: Intento de encolar una comanda nula. Se ignoró.");
+            System.out.println("Aviso: Intento de encolar una comanda nula. Se ignoró.");
             return;
         }
 
